@@ -1,15 +1,36 @@
 import logo from "./logo.svg";
-import NavBar from './components/NavBar.js'
-import Content from './components/Content.js'
-import ClassState from "./State Components/ClassState";
-import ClassForm from "./Forms/ClassForms";
+import React, { useState } from "react";
+import Form from "./CRUD BootStrap/FormBootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import FormList from "./CRUD BootStrap/FormList";
+
 function App() {
-  
-  const name='Papaye'
+  const [persons, setpersons] = useState([
+    {
+      name: "Joel",
+      description: "Like coding",
+    },
+    {
+      name: "Frank",
+      description: "Like programming",
+    },
+  ]);
+
+  console.log(persons);
+
+  const updateState = (userName, userDescription) => {
+    const newPerson = {
+      name: userName,
+      description: userDescription,
+    };
+
+    setpersons([...persons, newPerson]);
+  };
 
   return (
     <div className="App">
-      <ClassForm/>
+      <Form getData={updateState} />
+      <FormList listData={persons} />
     </div>
   );
 }
