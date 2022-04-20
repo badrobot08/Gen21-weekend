@@ -1,22 +1,15 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
+import Eachlist from "./EachList";
 
 function FormList(props) {
   return (
     <div>
-      {props.listData.map((item, index) => {
+      {props.listData.map((item) => {
         return (
-          <>
-            <div key={index} style={{ margin: 10 }}>
-              <Card style={{ width: "16rem" }}>
-                <Card.Body>
-                  <Card.Title>{item.name}</Card.Title>
-                  <Card.Text>{item.description}</Card.Text>
-                  <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-              </Card>
-            </div>
-          </>
+          <div key={item.id} style={{ margin: 10 }}>
+            <Eachlist item={item} delete={props.delete} edit={props.edit} />
+          </div>
         );
       })}
     </div>
